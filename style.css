@@ -1,0 +1,75 @@
+/* Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+    margin-bottom: 30px;
+}
+
+/* Container */
+#hostels {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Hostel Card */
+.hostel {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hostel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Hostel Details */
+.hostel h2 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.hostel p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.hostel p span {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    #hostels {
+        padding: 15px;
+    }
+
+    .hostel {
+        padding: 10px;
+    }
+
+    .hostel h2 {
+        font-size: 1.2em;
+    }
+}
+
+

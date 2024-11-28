@@ -1,75 +1,114 @@
-/* Base Styles */
+/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: #e0f7e0;  /* Light green background for the body */
+    color: #333333;  /* Dark text color for readability */
 }
 
 /* Header Styles */
-h1 {
+header {
+    background-color: #4CAF50;  /* Vibrant green */
+    color: #ffffff;
     text-align: center;
-    padding: 20px;
-    background-color: #4CAF50;
-    color: white;
-    margin-bottom: 30px;
+    padding: 1em 0;
+    position: sticky;
+    top: 0;
 }
 
-/* Container */
-#hostels {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 800px;
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.logo {
+    width: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+h1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Intro Section Styles */
+.intro {
+    text-align: center;
+    padding: 2em 1em;
+    background-color: #c8e6c9;  /* Light green */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Search Form Styles */
+.search {
+    text-align: center;
+    padding: 2em 1em;
+    background-color: #aed581;  /* Light vibrant green */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 1em;
     border-radius: 8px;
 }
 
-/* Hostel Card */
+.search form {
+    display: inline-block;
+}
+
+.search label, .search input {
+    margin: 0 0.5em;
+    color: #ffffff;  /* Light text color */
+}
+
+.search input {
+    padding: 0.5em;
+    border: 1px solid #ffffff;  /* White border */
+    border-radius: 4px;
+    width: 100px;
+    background-color: #81c784;  /* Light green */
+    color: #ffffff;  /* Light input text */
+}
+
+.search button {
+    padding: 0.5em 1em;
+    background-color: #ffeb3b;  /* Vibrant yellow */
+    color: #333333;  /* Dark text color for contrast */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search button:hover {
+    background-color: #fdd835;  /* Darker yellow on hover */
+}
+
+/* Listings Section Styles */
+.listings {
+    padding: 2em 1em;
+    text-align: center;
+}
+
 .hostel {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ddd;
+    background-color: #f0f4c3;  /* Light yellow */
+    margin: 1em;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-block;
+    text-align: left;
+    width: calc(100% - 2em);
+    max-width: 500px;
+    color: #333333;  /* Dark text color */
 }
 
-.hostel:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Hostel Details */
 .hostel h2 {
-    margin: 0 0 10px;
-    font-size: 1.5em;
-    color: #333;
+    margin: 0 0 0.5em 0;
+    color: #333333;  /* Dark text color */
 }
 
 .hostel p {
-    margin: 5px 0;
-    line-height: 1.6;
+    margin: 0.5em 0;
+    color: #555555;  /* Dark gray text color */
 }
 
-.hostel p span {
-    font-weight: bold;
-    color: #4CAF50;
+/* Google Sign-In Button Styles */
+.auth {
+    text-align: center;
+    padding: 2em 1em;
 }
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    #hostels {
-        padding: 15px;
-    }
-
-    .hostel {
-        padding: 10px;
-    }
-
-    .hostel h2 {
-        font-size: 1.2em;
-    }
-}
-
-

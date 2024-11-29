@@ -1,30 +1,29 @@
+/* Import Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
 /* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #121212;
+    color: #E0E0E0;
     line-height: 1.6;
+    box-sizing: border-box;
 }
 
 /* Header Styles */
 header {
-    background-color: #34495e; /* Dark blue-gray */
+    background-color: #1F1F1F; /* Dark grey */
     color: #fff;
-    text-align: center;
-    padding: 1em 0;
+    padding: 1em 2em;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2em;
 }
 
 .navbar-brand {
@@ -34,7 +33,6 @@ header {
 
 header .logo {
     width: 60px;
-    vertical-align: middle;
     margin-right: 15px;
 }
 
@@ -50,13 +48,14 @@ header .logo {
 }
 
 .navbar-menu a {
-    color: #fff;
+    color: #E0E0E0;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .navbar-menu a:hover {
-    text-decoration: underline;
+    color: #F39C12; /* Hover effect */
 }
 
 /* Hero Section */
@@ -64,9 +63,12 @@ header .logo {
     background: url('hero-image.jpg') center/cover no-repeat;
     color: #fff;
     text-align: center;
-    padding: 4em 1em;
+    padding: 6em 1em;
     position: relative;
-    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .intro h2 {
@@ -88,19 +90,20 @@ header .logo {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: -1;
 }
 
 /* Search Form */
 .search {
-    background-color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: #1F1F1F;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     padding: 2em;
     margin: 2em auto;
     border-radius: 10px;
-    width: 80%;
+    width: 70%;
     max-width: 900px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -108,31 +111,41 @@ header .logo {
 
 .search h3 {
     margin-bottom: 1em;
+    color: #F39C12;
 }
 
 .search label {
     margin-right: 10px;
-    font-weight: bold;
-    color: #333;
+    font-weight: 600;
+    color: #E0E0E0;
 }
 
 .search input {
-    padding: 0.5em;
-    border: 2px solid #ccc;
+    padding: 0.7em;
+    border: 2px solid #333;
     border-radius: 5px;
-    width: 80%;
+    width: 100%;
     margin: 0.5em 0;
+    transition: border-color 0.3s ease;
+    background-color: #333;
+    color: #fff;
+}
+
+.search input:focus {
+    border-color: #27AE60; /* Green on focus */
+    outline: none;
 }
 
 .search button {
-    padding: 0.7em 1.5em;
-    background-color: #27ae60;
+    padding: 0.7em 2em;
+    background-color: #27AE60;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.3s ease;
+    margin-top: 1em;
 }
 
 .search button:hover {
@@ -140,133 +153,99 @@ header .logo {
 }
 
 /* Listings Section */
-/* Listings Section */
 .listings {
     padding: 2em;
-    background-color: #ecf0f1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    display: none; /* Hide the listings initially */
+    background-color: #121212; /* Background color remains consistent */
+    display: grid; /* Use grid layout */
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px; /* Space between listings */
 }
 
-/* Other styles remain the same */
-
-
+/* Hostel Card Styles */
 .hostel {
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    margin: 1em;
-    overflow: hidden;
-    max-width: 800px;
+    background: transparent; /* Fully transparent background */
+    padding: 1em 0; /* Add spacing around the card */
+    margin-bottom: 20px; /* Space between cards */
     display: flex;
-    flex-direction: row;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 300px;
+    flex-direction: column;
+    align-items: center; /* Center-align content */
+    gap: 0.5em;
 }
 
-.hostel:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Colorful Data Boxes */
+/* Hostel Image */
 .hostel img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px 0 0 5px;
+    display: block; /* Prevent inline spacing issues */
+    max-width: 40%; /* Restrict maximum width to 40% of parent container */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image fits properly */
+    margin-bottom: 1em; /* Add spacing below the image */
+    border-radius: 10px; /* Optional: Slight rounding for aesthetics */
+    transition: transform 0.3s ease; /* Optional hover effect */
 }
 
+.hostel img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Hostel Content */
 .hostel-content {
     padding: 1em;
-    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align content */
+    justify-content: center;
+    text-align: center; /* Center text alignment */
+    gap: 0.5em;
 }
 
+/* Hostel Name */
 .hostel h2 {
-    margin: 0;
-    font-size: 1.5em;
-    color: #34495e;
-    background-color: #f39c12; /* Background color for name */
-    padding: 10px;
-    border-radius: 5px;
-    color: #fff;
-}
-
-.hostel p {
+    font-size: 1.5em; /* Adjust font size for balance */
+    color: #F39C12; /* Highlighted color for titles */
     margin: 0.5em 0;
-    color: #666;
+    font-weight: 600;
 }
 
-/* Price Box */
+/* Price Styling */
 .hostel .price {
     font-weight: bold;
-    color: #e74c3c;
-    background-color: #f8c471; /* Price background color */
-    padding: 5px 10px;
-    border-radius: 5px;
+    color: #E74C3C;
+    font-size: 1.2em;
+    margin: 0.5em 0;
 }
 
-/* Amenities Box */
-.hostel .amenities {
+/* Amenities and Rating */
+.hostel .amenities,
+.hostel .rating {
     font-size: 0.9em;
-    color: #555;
-    background-color: #d5dbdb; /* Amenities background color */
-    padding: 5px 10px;
+    color: #E0E0E0;
+    margin: 0.2em 0;
+    display: flex;
+    justify-content: center; /* Center amenities */
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.amenities span {
+    background: rgba(0, 0, 0, 0.7); /* Slightly dark background for contrast */
+    color: #E0E0E0;
+    padding: 0.3em 0.5em;
     border-radius: 5px;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.listings .hostel {
-    animation: fadeIn 0.8s ease;
-}
-
-/* Google Sign-In */
-.auth {
-    text-align: center;
-    margin-top: 2em;
-}
-
-.g-signin2 {
+    font-size: 0.8em;
     display: inline-block;
-    margin: 1em 0;
-}
-
-#signOutButton {
-    padding: 0.7em 1.5em;
-    background-color: #c0392b;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#signOutButton:hover {
-    background-color: #962d22;
 }
 
 /* Footer */
 footer {
-    background-color: #34495e;
+    background-color: #1F1F1F;
     color: #fff;
     text-align: center;
     padding: 1em 0;
     margin-top: 3em;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Responsive Styles */
@@ -275,25 +254,21 @@ footer {
         width: 90%;
     }
 
-    .search input {
-        width: 100%;
+    .listings {
+        grid-template-columns: 1fr; /* Stack items in a single column on smaller screens */
     }
 
     .hostel {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        height: auto; /* Adjust height for smaller screens */
     }
 
     .hostel img {
-        width: 100%;
-        height: auto;
+        max-width: 70%; /* Slightly larger image for smaller screens */
     }
 
     .hostel-content {
         padding: 1.5em;
-    }
-
-    .intro {
-        padding: 3em 1em;
+        width: 100%; /* Full width on smaller screens */
     }
 }

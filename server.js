@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path');
 require('dotenv').config(); // Load environment variables from .env file
 
 // MongoDB connection URI
@@ -17,6 +18,7 @@ const hostelSchema = new mongoose.Schema({
     price: Number,
     amenities: [String],
     rating: Number,
+    image: String, // New field for the image filename
 });
 
 const Hostel = mongoose.model('Hostel', hostelSchema);
@@ -25,8 +27,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const path = require('path');
-
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -34,16 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
-// API to get all hostels
-// app.get('/hostels', async (req, res) => {
-//     try {
-//         const hostels = await Hostel.find({});
-//         res.json(hostels);
-//     } catch (error) {
-//         res.status(500).send(error);
-//     }
-// });
 
 // API to add a single hostel
 app.post('/hostels', async (req, res) => {
@@ -67,6 +57,27 @@ app.post('/bulk-hostels', async (req, res) => {
     }
 });
 
+// API to search for hostels by price range
+app.get('/hostels/search', async (req, res) => {
+    try {
+        const { minPrice = 0, maxPrice = Number.MAX_SAFE_INTEGER } = req.query;
+
+        const hostels = await Hostel.find({
+            price: { $gte: minPrice, $lte: maxPrice },
+        });
+
+        // Construct full image URLs for each hostel
+        const hostelsWithImages = hostels.map((hostel) => ({
+            ...hostel.toObject(),
+            image: `http://localhost:3000/images/${hostel.image}`,
+        }));
+
+        res.json(hostelsWithImages);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
 // API to delete all hostels
 app.delete('/hostels', async (req, res) => {
     try {
@@ -77,20 +88,8 @@ app.delete('/hostels', async (req, res) => {
     }
 });
 
-// API to search hostels by price range
-app.get('/hostels/search', async (req, res) => {
-    try {
-        const minPrice = parseInt(req.query.minPrice) || 0;
-        const maxPrice = parseInt(req.query.maxPrice) || Number.MAX_SAFE_INTEGER;
-        const hostels = await Hostel.find({ price: { $gte: minPrice, $lte: maxPrice } });
-        res.json(hostels);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
-
-// Start the server
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });

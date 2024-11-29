@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel and PG Finder</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Load Google Platform Library -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="817467738795-3q6mv0cvu0osp42dsl6bvtff1on33r6g.apps.googleusercontent.com"> <!-- Replace with your actual client ID -->
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Hostel and PG Finder Logo" class="logo">
+        <h1>Hostel and PG Finder</h1>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Welcome to the best platform for finding hostels and PGs!</h2>
+            <p>Find your next comfortable stay with us.</p>
+        </section>
+
+        <section class="auth">
+            <!-- Google Sign-In Button -->
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+            <button id="signOutButton" style="display: none;" onclick="signOut()">Sign Out</button>
+        </section>
+
+        <section class="search">
+            <h3>Search Hostels and PGs</h3>
+            <form id="searchForm">
+                <label for="minPrice">Min Price:</label>
+                <input type="number" id="minPrice" name="minPrice" placeholder="e.g., 1000">
+                
+                <label for="maxPrice">Max Price:</label>
+                <input type="number" id="maxPrice" name="maxPrice" placeholder="e.g., 5000">
+                
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section id="hostels" class="listings">
+            <!-- Hostel and PG listings will be dynamically loaded here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Hostel and PG Finder. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Handle Google Sign-Out
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(() => {
+                console.log('User  signed out.');
+                document.getElementById('signOutButton').style.display = 'none';
+                document.querySelector('.g-signin2').style.display = 'block';
+            });
+        }
+
+        // Google Sign-In Callback
+        window.onSignIn = function(googleUser ) {
+            const idToken = googleUser .getAuthResponse().id_token;
+            fetch('http://localhost:3000/api/google-signin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: idToken }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    console.log('User  logged in successfully:', data.userId);
+                    document.getElementById('signOutButton').style.display = 'block';
+                    document.querySelector('.g-signin2').style.display = 'none';
+                } else {
+                    console.log('Sign-in failed:', data.message);
+                }
+            })
+            .catch((error) => console.error('Error during sign-in:', error));
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

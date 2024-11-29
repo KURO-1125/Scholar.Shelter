@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.getElementById('searchForm');
     const hostelsDiv = document.getElementById('hostels');
 
-    searchForm.addEventListener('submit', function(event) {
+    searchForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const minPrice = document.getElementById('minPrice').value || 0;
         const maxPrice = document.getElementById('maxPrice').value || Number.MAX_SAFE_INTEGER;
@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function fetchHostels(minPrice = 0, maxPrice = Number.MAX_SAFE_INTEGER) {
         fetch(`http://localhost:3000/hostels/search?minPrice=${minPrice}&maxPrice=${maxPrice}`)
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => response.json())
+            .then((data) => {
                 hostelsDiv.innerHTML = ''; // Clear previous results
                 if (data.length === 0) {
                     hostelsDiv.innerHTML = '<p>No hostels found within the specified price range.</p>';
                 } else {
-                    data.forEach(hostel => {
+                    data.forEach((hostel) => {
                         const hostelDiv = document.createElement('div');
                         hostelDiv.className = 'hostel';
 
@@ -45,39 +45,27 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
             })
-            .catch(error => console.error('Error fetching hostels:', error));
+            .catch((error) => console.error('Error fetching hostels:', error));
     }
 
-    // Initial fetch of hostels without any price filtering
     fetchHostels();
+
+    // Google Sign-In
+    window.onSignIn = function (googleUser) {
+        const idToken = googleUser.getAuthResponse().id_token;
+        fetch('http://localhost:3000/api/google-signin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token: idToken }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    console.log('User logged in successfully:', data.userid);
+                } else {
+                    console.log('Sign-in failed:', data.message);
+                }
+            })
+            .catch((error) => console.error('Error during sign-in:', error));
+    };
 });
-
-// Google Sign-In
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId());
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-
-    // Send the ID token to your backend for verification
-    var id_token = googleUser.getAuthResponse().id_token;
-    fetch('http://localhost:3000/api/google-signin', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token: id_token }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log('Sign-in successful, user ID:', data.userid);
-        } else {
-            console.log('Sign-in failed:', data.message);
-        }
-    })
-    .catch(error => {
-        console.error('Error during sign-in:', error);
-    });
-}

@@ -5,6 +5,7 @@ body {
     padding: 0;
     background-color: #e0f7e0;  /* Light green background for the body */
     color: #333333;  /* Dark text color for readability */
+    line-height: 1.6;
 }
 
 /* Header Styles */
@@ -15,6 +16,8 @@ header {
     padding: 1em 0;
     position: sticky;
     top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .logo {
@@ -26,6 +29,7 @@ header {
 h1 {
     display: inline-block;
     vertical-align: middle;
+    font-size: 1.8em;
 }
 
 /* Intro Section Styles */
@@ -35,6 +39,7 @@ h1 {
     background-color: #c8e6c9;  /* Light green */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 1em;
 }
 
 /* Search Form Styles */
@@ -49,18 +54,21 @@ h1 {
 
 .search form {
     display: inline-block;
+    flex-wrap: wrap;
+    gap: 1em;
 }
 
-.search label, .search input {
+.search label {
     margin: 0 0.5em;
     color: #ffffff;  /* Light text color */
+    font-weight: bold;
 }
 
 .search input {
     padding: 0.5em;
     border: 1px solid #ffffff;  /* White border */
     border-radius: 4px;
-    width: 100px;
+    width: 120px;
     background-color: #81c784;  /* Light green */
     color: #ffffff;  /* Light input text */
 }
@@ -72,6 +80,7 @@ h1 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .search button:hover {
@@ -86,14 +95,12 @@ h1 {
 
 .hostel {
     background-color: #f0f4c3;  /* Light yellow */
-    margin: 1em;
-    padding: 1em;
+    margin: 1em auto;
+    padding: 1.5em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    display: inline-block;
     text-align: left;
-    width: calc(100% - 2em);
-    max-width: 500px;
+    max-width: 600px;
     color: #333333;  /* Dark text color */
 }
 
@@ -105,10 +112,61 @@ h1 {
 .hostel p {
     margin: 0.5em 0;
     color: #555555;  /* Dark gray text color */
+    line-height: 1.4;
 }
 
 /* Google Sign-In Button Styles */
 .auth {
     text-align: center;
     padding: 2em 1em;
+}
+
+.g-signin2 {
+    margin: 1em auto;
+}
+
+#signOutButton {
+    background-color: #d32f2f; /* Red button for sign-out */
+    color: #ffffff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#signOutButton:hover {
+    background-color: #b71c1c; /* Darker red on hover */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #4CAF50;  /* Vibrant green */
+    color: #ffffff;
+    margin-top: 2em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search input {
+        width: 80%;
+        margin: 0.5em 0;
+    }
+
+    .hostel {
+        width: calc(90% - 2em);
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
 }

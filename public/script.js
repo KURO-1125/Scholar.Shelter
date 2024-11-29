@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.getElementById('searchForm');
     const hostelsDiv = document.getElementById('hostels');
 
+    // Event listener for the search form submission
     searchForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const minPrice = document.getElementById('minPrice').value || 0;
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchHostels(minPrice, maxPrice);
     });
 
+    // Function to fetch hostels from the server
     function fetchHostels(minPrice = 0, maxPrice = Number.MAX_SAFE_INTEGER) {
         fetch(`http://localhost:3000/hostels/search?minPrice=${minPrice}&maxPrice=${maxPrice}`)
             .then((response) => response.json())
@@ -48,24 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch((error) => console.error('Error fetching hostels:', error));
     }
 
+    // Fetch all hostels on page load
     fetchHostels();
-
-    // Google Sign-In
-    window.onSignIn = function (googleUser) {
-        const idToken = googleUser.getAuthResponse().id_token;
-        fetch('http://localhost:3000/api/google-signin', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ token: idToken }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.success) {
-                    console.log('User logged in successfully:', data.userid);
-                } else {
-                    console.log('Sign-in failed:', data.message);
-                }
-            })
-            .catch((error) => console.error('Error during sign-in:', error));
-    };
 });

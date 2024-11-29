@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const minPriceInput = document.getElementById('minPrice');
     const maxPriceInput = document.getElementById('maxPrice');
 
+    // Initially hide the hostels div
+    hostelsDiv.style.display = 'none';
+
     // Event listener for the search form submission
     searchForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -69,13 +72,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         hostelsDiv.appendChild(hostelDiv);
                     });
                 }
+
+                // Make the hostels div visible after the data is fetched
+                hostelsDiv.style.display = 'block';
             })
             .catch((error) => {
                 console.error('Error fetching hostels:', error);
                 hostelsDiv.innerHTML = '<p>Error fetching data. Please try again later.</p>';
+                hostelsDiv.style.display = 'block'; // Show error message
             });
     }
 
-    // Fetch all hostels on page load
-    fetchHostels();
+    // Optionally fetch all hostels on page load (but initially hidden)
+    // fetchHostels();
 });

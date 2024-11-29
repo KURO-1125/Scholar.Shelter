@@ -36,14 +36,14 @@ app.get('/', (req, res) => {
 });
 
 // API to get all hostels
-app.get('/hostels', async (req, res) => {
-    try {
-        const hostels = await Hostel.find({});
-        res.json(hostels);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
+// app.get('/hostels', async (req, res) => {
+//     try {
+//         const hostels = await Hostel.find({});
+//         res.json(hostels);
+//     } catch (error) {
+//         res.status(500).send(error);
+//     }
+// });
 
 // API to add a single hostel
 app.post('/hostels', async (req, res) => {

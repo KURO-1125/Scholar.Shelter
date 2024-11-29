@@ -1,172 +1,530 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0f7e0;  /* Light green background for the body */
-    color: #333333;  /* Dark text color for readability */
+    background-color: #f9f9f9;
+    color: #333;
     line-height: 1.6;
 }
 
 /* Header Styles */
 header {
-    background-color: #4CAF50;  /* Vibrant green */
-    color: #ffffff;
+    background-color: #34495e; /* Dark blue-gray */
+    color: #fff;
     text-align: center;
     padding: 1em 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.logo {
-    width: 50px;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    width: 60px;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
-h1 {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 1.8em;
+.navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
 }
 
-/* Intro Section Styles */
+.navbar-menu li {
+    margin: 0 1em;
+}
+
+.navbar-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
 .intro {
+    background: url('hero-image.jpg') center/cover no-repeat;
+    color: #fff;
     text-align: center;
-    padding: 2em 1em;
-    background-color: #c8e6c9;  /* Light green */
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 1em;
+    padding: 4em 1em;
+    position: relative;
+    z-index: 1;
 }
 
-/* Search Form Styles */
+.intro h2 {
+    font-size: 2.5em;
+    margin: 0.5em 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.intro p {
+    font-size: 1.2em;
+    margin-top: 1em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* Search Form */
 .search {
-    text-align: center;
-    padding: 2em 1em;
-    background-color: #aed581;  /* Light vibrant green */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 1em;
-    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column; /* Changed to column for better stacking */
+    align-items: center; /* Center items */
 }
 
-.search form {
-    display: inline-block;
-    flex-wrap: wrap;
-    gap: 1em;
+.search h3 {
+    margin-bottom: 1em;
 }
 
 .search label {
-    margin: 0 0.5em;
-    color: #ffffff;  /* Light text color */
+    margin-right: 10px;
     font-weight: bold;
+    color: #333;
 }
 
 .search input {
     padding: 0.5em;
-    border: 1px solid #ffffff;  /* White border */
-    border-radius: 4px;
-    width: 120px;
-    background-color: #81c784;  /* Light green */
-    color: #ffffff;  /* Light input text */
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 80%; /* Adjusted for better responsiveness */
+    margin: 0.5em 0; /* Added margin for spacing */
 }
 
 .search button {
-    padding: 0.5em 1em;
-    background-color: #ffeb3b;  /* Vibrant yellow */
-    color: #333333;  /* Dark text color for contrast */
+    padding: 0.7em 1.5em;
+    background-color: #27ae60;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
 .search button:hover {
-    background-color: #fdd835;  /* Darker yellow on hover */
+    background-color: #219150;
 }
 
-/* Listings Section Styles */
+/* Listings Section */
 .listings {
-    padding: 2em 1em;
-    text-align: center;
+    padding: 2em;
+    background-color: #ecf0f1;
 }
 
 .hostel {
-    background-color: #f0f4c3;  /* Light yellow */
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
     margin: 1em auto;
-    padding: 1.5em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    text-align: left;
-    max-width: 600px;
-    color: #333333;  /* Dark text color */
+    overflow: hidden;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hostel:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hostel img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-right: 1px solid #ddd;
+}
+
+.hostel-content {
+    padding: 1em;
+    flex: 1;
 }
 
 .hostel h2 {
-    margin: 0 0 0.5em 0;
-    color: #333333;  /* Dark text color */
+    margin: 0;
+    font-size: 1.5em;
+    color: #34495e;
 }
 
 .hostel p {
     margin: 0.5em 0;
-    color: #555555;  /* Dark gray text color */
-    line-height: 1.4;
+    color: #666;
 }
 
-/* Google Sign-In Button Styles */
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.listings .hostel {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Google Sign-In */
 .auth {
     text-align: center;
-    padding: 2em 1em;
+    margin-top: 2em;
 }
 
 .g-signin2 {
-    margin: 1em auto;
+    display: inline-block;
+    margin: 1em 0;
 }
 
 #signOutButton {
-    background-color: #d32f2f; /* Red button for sign-out */
-    color: #ffffff;
-    padding: 0.5em 1em;
+    padding: 0.7em 1.5em;
+    background-color: #c0392b;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 #signOutButton:hover {
-    background-color: #b71c1c; /* Darker red on hover */
+    background-color: #962d22;
 }
 
-/* Footer Styles */
+/* Footer */
 footer {
+    background-color: #34495e;
+    color: #fff;
     text-align: center;
     padding: 1em 0;
-    background-color: #4CAF50;  /* Vibrant green */
-    color: #ffffff;
-    margin-top: 2em;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 3em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .search form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .search {
+        width: 90%; /* Adjusted for smaller screens */
     }
 
     .search input {
-        width: 80%;
-        margin: 0.5em 0;
+        width: 100%; /* Full width for inputs */
     }
 
     .hostel {
-        width: calc(90% - 2em);
+        flex-direction: column; /* Stack items vertically */
     }
 
-    h1 {
-        font-size: 1.5em;
+    .hostel img {
+        width: 100%; /* Full width for images */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .hostel-content {
+        padding: 1.5em;
+    }
+
+    .intro {
+        padding: 3em 1em;
+    }
+} ```css
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #34495e; /* Dark blue-gray */
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    width: 60px;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+
+.navbar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.navbar-menu li {
+    margin: 0 1em;
+}
+
+.navbar-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar-menu a:hover {
+    text-decoration: underline;
+}
+
+/* Hero Section */
+.intro {
+    background: url('hero-image.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 4em 1em;
+    position: relative;
+    z-index: 1;
+}
+
+.intro h2 {
+    font-size: 2.5em;
+    margin: 0.5em 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.intro p {
+    font-size: 1.2em;
+    margin-top: 1em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.intro::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* Search Form */
+.search {
+    background-color: #ffffff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column; /* Changed to column for better stacking */
+    align-items: center; /* Center items */
+}
+
+.search h3 {
+    margin-bottom: 1em;
+}
+
+.search label {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.search input {
+    padding: 0.5em;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 80%; /* Adjusted for better responsiveness */
+    margin: 0.5em 0; /* Added margin for spacing */
+}
+
+.search button {
+    padding: 0.7em 1.5em;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.search button:hover {
+    background-color: #219150;
+}
+
+/* Listings Section */
+.listings {
+    padding: 2em;
+    background-color: #ecf0f1;
+}
+
+.hostel {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 1em auto;
+    overflow: hidden;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hostel:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hostel img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-right: 1px solid #ddd;
+}
+
+.hostel-content {
+    padding: 1em;
+    flex: 1;
+}
+
+.hostel h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #34495e;
+}
+
+.hostel p {
+    margin: 0.5em 0;
+    color: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
+
+.listings .hostel {
+    animation: fadeIn 0.8s ease;
+}
+
+/* Google Sign-In */
+.auth {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.g-signin2 {
+    display: inline-block;
+    margin: 1em 0;
+}
+
+#signOutButton {
+    padding: 0.7em 1.5em;
+    background-color: #c0392b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#signOutButton:hover {
+    background-color: #962d22;
+}
+
+/* Footer */
+footer {
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: 3em;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .search {
+        width: 90%; /* Adjusted for smaller screens */
+    }
+
+    .search input {
+        width: 100%; /* Full width for inputs */
+    }
+
+    .hostel {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .hostel img {
+        width: 100%; /* Full width for images */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .hostel-content {
+        padding: 1.5em;
+    }
+
+    .intro {
+        padding: 3em 1em;
+    }
+} 
